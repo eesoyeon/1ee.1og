@@ -1,3 +1,3 @@
-export default function Page() {
-  return <>게시글</>;
+export default function BlogPostPage() {
+  return <>블로그 내용이 들어갈 곳입니다</>;
 }
