@@ -3,7 +3,7 @@ import localFont from 'next/font/local';
 import '../styles/globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { ThemeProvider } from '@/components/theme/ThemeProvider';
 
 const pretendard = localFont({
   src: [
@@ -48,6 +48,8 @@ const pretendard = localFont({
       style: 'extrabold',
     },
   ],
+  display: 'swap',
+  variable: '--font-pretendard',
 });
 
 export const metadata: Metadata = {
@@ -61,11 +63,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={pretendard.className}>
+    <html lang="en" className={pretendard.className} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <ThemeProvider>
           <Header />
-          <main className="w-full min-h-screen mx-auto px-4">{children}</main>
+          <main className="w-full mx-auto px-4">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

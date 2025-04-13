@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'tailwindcss/preflight';
-@import 'tailwindcss/utilities';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -115,10 +113,28 @@
 }
 
 @layer base {
-  * {
+  /* * {
     @apply border-border outline-ring/50;
-  }
+  } */
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .column-center {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  .column-between {
+    @apply flex flex-col justify-between items-center;
   }
 }
