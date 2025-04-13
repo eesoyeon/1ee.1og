@@ -30,6 +30,7 @@ export function PostCard({ post }: PostCardProps) {
         <Image
           src={thumbnail}
           alt="thumbnail"
+          priority={false}
           // width={200}
           // height={200}
           className="mx-auto object-cover w-2/3"

@@ -1,12 +1,10 @@
 import { getPostDetail } from '@/lib/posts';
 
-interface PostDetailPageProps {
-  params: {
-    slug: string[];
-  };
-}
-
-export default async function PostDetailPage({ params }: PostDetailPageProps) {
+export default async function PostDetailPage({
+  params,
+}: {
+  params: { slug: string[] };
+}) {
   const [category, slug] = params.slug;
   const postDetail = await getPostDetail(category, slug);
   console.log(params);
