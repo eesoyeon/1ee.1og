@@ -1,11 +1,11 @@
 'use client';
 
-import ThemeToggle from '@/components/ThemeToggle';
+import ThemeToggle from '@/components/theme/ThemeToggle';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { name: 'Blog', href: '/blog' },
+  { name: 'Post', href: '/posts' },
   { name: 'Portfolio', href: '/portfolio' },
 ];
 
@@ -13,10 +13,11 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full sticky top-0 left-0 right-0 z-50 backdrop-blur-lg">
-      <div className="mx-auto h-16 flex items-center justify-between">
+    <header className="w-full sticky top-0 left-0 right-0 z-50 backdrop-blur-3xl">
+      <div className="mx-auto h-16 flex items-center justify-between px-4">
         <Link href="/" className="text-lg font-extralight">
           1ee.1og
+          {/* 1ee1og */}
         </Link>
         <nav className="flex gap-6 text-sm">
           {navItems.map(({ name, href }) => (
@@ -25,15 +26,15 @@ export default function Header() {
               href={href}
               className={
                 pathname === href
-                  ? 'text-rose-400 font-semibold'
+                  ? 'text-rose-900 font-medium'
                   : 'text-muted-foreground'
               }
             >
               {name}
             </Link>
           ))}
-          <ThemeToggle />
         </nav>
+        <ThemeToggle />
       </div>
     </header>
   );
