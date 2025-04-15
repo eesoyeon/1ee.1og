@@ -53,8 +53,11 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: '1ee.1og',
-  description: 'My log & Portfolio',
+  title: '이소연의 개발 블로그',
+  description: `Hello. I'M a FRONTEND Developer.`,
+  icons: {
+    icon: 'logo.svg',
+  },
 };
 
 export default function RootLayout({
@@ -67,7 +70,9 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <ThemeProvider>
           <Header />
-          <main className="w-full mx-auto px-4">{children}</main>
+          <main className="w-full mx-auto bg-white dark:bg-[#121212]">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

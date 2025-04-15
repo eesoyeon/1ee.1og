@@ -1,4 +1,4 @@
-import { CategoryList } from '@/components/CategoryList';
+import { Category } from '@/components/Category';
 import { PostCard } from '@/components/post/PostCard';
 import { getCategoryDetail, getPostList } from '@/lib/posts';
 
@@ -7,16 +7,23 @@ export default async function PostListPage() {
   const categoryList = await getCategoryDetail();
 
   return (
-    <main className="flex flex-col justify-center md:flex-row gap-4 w-[90%] m-auto relative my-10">
-      <div className="flex gap-2 px-2 md:flex-col">
-        {categoryList.map((category, index) => (
-          <CategoryList key={index} category={category} />
-        ))}
-      </div>
+    <main className="flex flex-col max-w-4xl gap-4 py-4 m-auto px-2">
+      <div className="h-16 md:h-14"></div>
 
-      <section className="column-center gap-4 md:grid md:grid-cols-2 md:w-[80%]">
+      <aside className="flex flex-wrap justify-start items-center gap-1">
+        {categoryList.map((category, index) => (
+          <Category key={index} category={category} />
+        ))}
+      </aside>
+
+      <hr className="text-gray-300 sm:hidden w-full" />
+
+      <section className="flex-1 grid gap-2 mx-auto w-full sm:grid sm:grid-cols-2 lg:grid-cols-3 ">
         {postList.map((post, index) => (
-          <PostCard key={index} post={post} />
+          <div key={index}>
+            <PostCard key={index} post={post} />
+            <hr className="text-gray-200 sm:hidden w-full" />
+          </div>
         ))}
       </section>
     </main>

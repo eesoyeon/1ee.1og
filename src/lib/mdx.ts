@@ -49,7 +49,7 @@ export const parseMdxDetail = async (postPath: string) => {
   const frontmatter = data as PostMatter;
   const dateToString = dayjs(frontmatter.date)
     .locale('ko')
-    .format('YYYY/MM/DD');
+    .format('YYYY. MM. DD');
 
   return { frontmatter, dateToString, content };
 };
