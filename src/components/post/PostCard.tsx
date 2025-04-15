@@ -13,34 +13,41 @@ export function PostCard({ post }: PostCardProps) {
     <Link
       key={post.slug}
       href={post.url}
-      className="w-full relative border border-black/10 rounded-md bg-white hover:border-black"
+      className="flex flex-row w-full h-full py-8 px-2 gap-6 sm:items-center sm:flex-col  relative border border-black/0 bg-white sm:border-gray-900/70 hover:border-rose-900  hover:border overflow-hidden transition-all duration-200 ease-in-out dark:hover:border-white hover:bg-rose-900/5 dark:hover:bg-rose-50"
     >
-      <header className="flex flex-col items-center text-black py-8 px-4 gap-1">
-        {/* <div> */}
-        <h1 className="text-xl font-medium border-t border-rose-900/0 p-2 md:text-sm">
-          {post.frontmatter.title}
-        </h1>
-        <p className="text-sm font-light md:text-xs">{post.frontmatter.desc}</p>
-        {/* </div> */}
+      <header className="flex flex-1 flex-col mx-2 sm:my-4 items-start justify-between text-gray-900 gap-4 break-keep sm:text-center sm:items-center sm:justify-center">
+        <div className="flex flex-col items-start gap-1 sm:items-center sm:justify-center">
+          <h1 className="max-sm:text-lg text-base font-medium break-keep">
+            {post.frontmatter.title}
+          </h1>
+          <p className="text-xs sm:flex-1 text-black font-light break-words line-clamp-2 sm:m-4">
+            {post.frontmatter.desc}
+          </p>
+        </div>
+
+        <div className="rounded-xl border border-gray-900/60 px-2 py-1 text-xs md:text-[10px] tracking-widest">
+          # {post.category}
+        </div>
       </header>
 
-      {/* <div className="text-xs">{post.dateToString}</div> */}
-
-      <div className="mx-auto p-4 w-2/3 rounded-xs bg-black/10">
+      <div className="m-auto w-[40%] sm:w-[60%] lg:w-[70%] rounded-2xl">
         <Image
           src={thumbnail}
           alt="thumbnail"
-          priority={false}
+          priority={true}
           // width={200}
           // height={200}
-          className="mx-auto object-cover w-2/3"
+          className="mx-auto object-cover aspect-[5/4] rounded-2xl"
         />
       </div>
 
-      <footer className="tracking-widest flex-center py-8">
-        <div className="bg-yellow-50 px-2 text-black text-xs md:text-[10px]">
-          # {post.category}
-        </div>
+      <footer className="absolute bottom-3 right-4 sm:static sm:flex-center sm:my-4">
+        <time
+          className="text-[10px] text-center text-gray-900 font-light"
+          dateTime={post.dateToString}
+        >
+          {post.dateToString}
+        </time>
       </footer>
     </Link>
   );
